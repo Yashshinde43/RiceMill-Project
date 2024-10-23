@@ -12,9 +12,9 @@ const Saudapatrak = () => {
     vechicle_number_id: "",
     paddy: "",
     bags: "",
-    weight: 0,
-    rate: 0,
-    amount: 0,
+    weight: null,
+    rate: null,
+    amount: null,
   });
   const initialDoData = {
     name: "",
@@ -22,9 +22,9 @@ const Saudapatrak = () => {
     vechicle_number_id: "",
     paddy: "",
     bags: "",
-    weight: 0,
-    rate: 0,
-    amount: 0,
+    weight: null,
+    rate: null,
+    amount: null,
   };
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;

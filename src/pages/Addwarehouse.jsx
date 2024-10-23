@@ -10,8 +10,8 @@ import ToastNotification from "../components/ToastNotification"; // Import the n
 const Add_Warehouse = () => {
   const [warehouseData, setWarehouseData] = useState({
     ware_house_name: "",
-    ware_house_transporting_rate: 0,
-    hamalirate: 0,
+    ware_house_transporting_rate: null,
+    hamalirate: null,
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
@@ -19,8 +19,8 @@ const Add_Warehouse = () => {
 
   const initialData = {
     ware_house_name: "",
-    ware_house_transporting_rate: 0,
-    hamalirate: 0,
+    ware_house_transporting_rate: null,
+    hamalirate: null,
   };
 
   const resetForm = () => {

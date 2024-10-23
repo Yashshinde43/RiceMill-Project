@@ -7,8 +7,8 @@ import SideBar from "../components/Sidebar";
 const Dhanricesocietiesrate = () => {
   const [DhanricesocietiesrateData, setDhanricesocietiesrateData] = useState({
     society_name_id: "",
-    distance: 0,
-    new: 0,
+    distance: null,
+    new: null,
   });
 
   // Fetch data for the "Society" dropdown

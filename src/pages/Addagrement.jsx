@@ -8,17 +8,17 @@ import SideBar from "../components/Sidebar";
 
 const Add_Agreement = () => {
   const [agreementData, setAgreementData] = useState({
-    rice_mill_id: 0,
+    rice_mill_id: null,
     agreement_number: "",
-    lot_from: 0,
-    lot_to: 0,
+    lot_from: null,
+    lot_to: null,
     type_of_agreement: "",
   });
   const initialData = {
-    rice_mill_id: 0,
+    rice_mill_id: null,
     agreement_number: "",
-    lot_from: 0,
-    lot_to: 0,
+    lot_from: null,
+    lot_to: null,
     type_of_agreement: "",
   };
   const resetForm = () => {

@@ -12,15 +12,15 @@ const Bhusi = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   const [BhusiData, setBhusiData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
-    number_of_bags: 0,
-    weight: 0,
+    number_of_bags: null,
+    weight: null,
     truck_number_id: "",
-    rate: 0,
-    amount: 0,
+    rate: null,
+    amount: null,
   });
 
   const [Alldata, setAlldata] = useState([]);
@@ -52,15 +52,15 @@ const Bhusi = () => {
   }, [apiBaseUrl, apiKey]);
 
   const initialBhusiData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
-    number_of_bags: 0,
-    weight: 0,
+    number_of_bags: null,
+    weight: null,
     truck_number_id: "",
-    rate: 0,
-    amount: 0,
+    rate: null,
+    amount: null,
   };
 
   const resetForm = () => {
@@ -130,14 +130,14 @@ const Bhusi = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="flex justify-between flex-wrap">
-                <Inputbox
+                {/* <Inputbox
                   label="RST"
                   name="rst_number"
                   type="number"
                   value={BhusiData.rst_number}
                   onChange={handleInputChange}
                   placeholder="Enter rst number"
-                />
+                /> */}
                 <Dateinput
                   value={BhusiData.date}
                   onChange={handleInputChange}

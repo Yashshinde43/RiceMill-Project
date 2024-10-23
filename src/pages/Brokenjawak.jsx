@@ -13,24 +13,24 @@ const Brokenjawak = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   const [BrokenjawakData, setBrokenjawakData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_recievable: 0,
+    total: null,
+    brokerage: null,
+    net_recievable: null,
     loading_date: "",
     recieved_date: "",
-    payment_recieved: 0,
-    number_of_days: 0,
-    payment_difference: 0,
+    payment_recieved: null,
+    number_of_days: null,
+    payment_difference: null,
     remarks: "",
   });
 
@@ -38,24 +38,24 @@ const Brokenjawak = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
 
   const initialBrokenjawakData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_recievable: 0,
+    total: null,
+    brokerage: null,
+    net_recievable: null,
     loading_date: "",
     recieved_date: "",
-    payment_recieved: 0,
-    number_of_days: 0,
-    payment_difference: 0,
+    payment_recieved: null,
+    number_of_days: null,
+    payment_difference: null,
     remarks: "",
   };
 
@@ -146,14 +146,14 @@ const Brokenjawak = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="flex justify-between flex-wrap ">
-                <Inputbox
+                {/* <Inputbox
                   label="RST"
                   name="rst_number"
                   type="number"
                   value={BrokenjawakData.rst_number}
                   onChange={handleInputChange}
                   placeholder="Enter RST number"
-                />
+                /> */}
                 <Dateinput
                   value={BrokenjawakData.date}
                   onChange={handleInputChange}

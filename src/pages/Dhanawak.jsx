@@ -31,38 +31,38 @@ const Dhan_Awak = () => {
     do_id: "",
     society_id: "",
     dm_weight: null,
-    number_of_bags: 0,
+    number_of_bags: null,
     truck_number_id: "",
     transporter_name_id: "",
     transporting_rate: 0,
     transporting_total: 0,
-    jama_jute_22_23: 0,
-    ek_bharti_21_22: 0,
-    pds: 0,
-    miller_purana: 0,
-    kisan: 0,
-    bardana_society: 0,
-    hdpe_22_23: 0,
-    hdpe_21_22: 0,
-    hdpe_21_22_one_use: 0,
-    total_bag_weight: 0,
+    jama_jute_22_23: null,
+    ek_bharti_21_22: null,
+    pds: null,
+    miller_purana: null,
+    kisan: null,
+    bardana_society: null,
+    hdpe_22_23: null,
+    hdpe_21_22: null,
+    hdpe_21_22_one_use: null,
+    total_bag_weight: null,
     type_of_paddy: "",
     actual_paddy: "",
-    mill_weight_quintals: 0,
+    mill_weight_quintals: null,
     shortage: 0,
-    bags_put_in_hopper: 0,
-    bags_put_in_stack: 0,
+    bags_put_in_hopper: null,
+    bags_put_in_stack: null,
     hopper_rice_mill_id: "",
     stack_location: "",
   });
   const initialDoData = {
-    rst_number: 0,
+    rst_number: null,
     rice_mill_id: "",
     date: "",
     do_id: "",
     society_id: "",
     dm_weight: null,
-    number_of_bags: 0,
+    number_of_bags: null,
     truck_number_id: "",
     transporter_name_id: "",
     transporting_rate: 0,
@@ -76,7 +76,7 @@ const Dhan_Awak = () => {
     hdpe_22_23: 0,
     hdpe_21_22: 0,
     hdpe_21_22_one_use: 0,
-    total_bag_weight: 0,
+    total_bag_weight: null,
     type_of_paddy: "",
     actual_paddy: "",
     mill_weight_quintals: 0,
@@ -152,7 +152,7 @@ const Dhan_Awak = () => {
   useEffect(() => {
     async function fetchtrucktransporter() {
       try {
-      const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
         const rice_do_number = await axios.get(
           `${apiBaseUrl}/truck-transporter/${DhanAwakData.transporter_name_id}`,
           {
@@ -278,7 +278,7 @@ const Dhan_Awak = () => {
     e.preventDefault();
     setIsModalOpen(true); // Open the confirmation modal
   };
-  
+
 
   return (
     <SideBar>
@@ -302,48 +302,52 @@ const Dhan_Awak = () => {
               onSubmit={handleFormSubmit}
             >
               <div className="flex justify-between flex-wrap">
-                <div>
-                  <div className="flex justify-between">
+                <div className="">
+
+                  <div >
+                    {/* <div className="flex justify-between">
                     <label
-                      htmlFor="rst_number"
-                      className="block mt-3 text-sm font-medium leading-6 text-gray-900" disabled
+                    htmlFor="rst_number"
+                    className="block mt-3 text-sm font-medium leading-6 text-gray-900"
                     >
-                      RST Number
+                    RST Number
                     </label>
-                  </div>
-                  <div className="mt-1">
+                    </div>
+                    <div className="mt-1">
                     <input
                       onChange={handleInputChange}
                       type="number"
                       name="rst_number"
                       value={DhanAwakData.rst_number}
+                      disabled
                       className="block min-w-[250px] px-1.5 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     />
+                    </div> */}
                   </div>
-                </div>
-                <div className="mt-3">
-                  <div className="flex justify-between">
-                    <label
-                      htmlFor="rice_mill_id"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Select Rice Mill
-                    </label>
-                  </div>
+                  <div className="mt-3 flex justify-center items-center">
+                    <div className="flex justify-between">
+                      <label
+                        htmlFor="rice_mill_id"
+                        className="block text-sm font-medium leading-6 text-gray-900"
+                      >
+                        Select Rice Mill
+                      </label>
+                    </div>
 
-                  <Select
-                    styles={customStyles}
-                    name="rice_mill_id"
-                    options={
-                      DoOptions.rice_mill_data &&
-                      DoOptions.rice_mill_data.map((option) => ({
-                        label: option.rice_mill_name,
-                        value: option.rice_mill_id,
-                      }))
-                    }
-                    value={
-                      DhanAwakData.rice_mill_id
-                        ? {
+                    <Select
+                    className="mx-2"
+                      styles={customStyles}
+                      name="rice_mill_id"
+                      options={
+                        DoOptions.rice_mill_data &&
+                        DoOptions.rice_mill_data.map((option) => ({
+                          label: option.rice_mill_name,
+                          value: option.rice_mill_id,
+                        }))
+                      }
+                      value={
+                        DhanAwakData.rice_mill_id
+                          ? {
                             label: DoOptions.rice_mill_data.find(
                               (option) =>
                                 option.rice_mill_id ===
@@ -351,18 +355,19 @@ const Dhan_Awak = () => {
                             ).rice_mill_name,
                             value: DhanAwakData.rice_mill_id,
                           }
-                        : null
-                    }
-                    onChange={(selectedOption) =>
-                      handleInputChange({
-                        target: {
-                          name: "rice_mill_id",
-                          value: selectedOption ? selectedOption.value : "",
-                        },
-                      })
-                    }
-                  />
+                          : null
+                      }
+                      onChange={(selectedOption) =>
+                        handleInputChange({
+                          target: {
+                            name: "rice_mill_id",
+                            value: selectedOption ? selectedOption.value : "",
+                          },
+                        })
+                      }
+                    />
 
+                  </div>
                   <p className="mt-2 text-sm text-gray-500">
                     Cannot Find?{" "}
                     <a
@@ -417,11 +422,11 @@ const Dhan_Awak = () => {
                       value={
                         DhanAwakData.do_id
                           ? {
-                              label: DoOptionsricedonumber.do_number_data.find(
-                                (option) => option.do_id === DhanAwakData.do_id
-                              ).do_number,
-                              value: DhanAwakData.do_id,
-                            }
+                            label: DoOptionsricedonumber.do_number_data.find(
+                              (option) => option.do_id === DhanAwakData.do_id
+                            ).do_number,
+                            value: DhanAwakData.do_id,
+                          }
                           : null
                       }
                       onChange={(selectedOption) =>
@@ -473,12 +478,12 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.society_id
                         ? {
-                            label: DoOptions.society_data.find(
-                              (option) =>
-                                option.society_id === DhanAwakData.society_id
-                            ).society_name,
-                            value: DhanAwakData.society_id,
-                          }
+                          label: DoOptions.society_data.find(
+                            (option) =>
+                              option.society_id === DhanAwakData.society_id
+                          ).society_name,
+                          value: DhanAwakData.society_id,
+                        }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -571,13 +576,13 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.transporter_name_id
                         ? {
-                            label: DoOptions.transporter_data.find(
-                              (option) =>
-                                option.transporter_id ===
-                                DhanAwakData.transporter_name_id
-                            ).transporter_name,
-                            value: DhanAwakData.transporter_name_id,
-                          }
+                          label: DoOptions.transporter_data.find(
+                            (option) =>
+                              option.transporter_id ===
+                              DhanAwakData.transporter_name_id
+                          ).transporter_name,
+                          value: DhanAwakData.transporter_name_id,
+                        }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -628,12 +633,12 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.truck_number_id
                         ? {
-                            label: DoOptionstrucktransporter.truck_data.find(
-                              (option) =>
-                                option.truck_id === DhanAwakData.truck_number_id
-                            ).truck_number,
-                            value: DhanAwakData.truck_number_id,
-                          }
+                          label: DoOptionstrucktransporter.truck_data.find(
+                            (option) =>
+                              option.truck_id === DhanAwakData.truck_number_id
+                          ).truck_number,
+                          value: DhanAwakData.truck_number_id,
+                        }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -908,12 +913,12 @@ const Dhan_Awak = () => {
                         +DhanAwakData.kisan +
                         +DhanAwakData.bardana_society) *
                         0.58) /
-                        100 +
+                      100 +
                       ((+DhanAwakData.hdpe_22_23 +
                         +DhanAwakData.hdpe_21_22 +
                         +DhanAwakData.hdpe_21_22_one_use) *
                         0.2) /
-                        100).toFixed(2)}
+                      100).toFixed(2)}
                     onChange={handleInputChange}
                     type="number"
                     name="total_bag_weight"
@@ -1046,7 +1051,7 @@ const Dhan_Awak = () => {
                     onChange={(name, value) =>
                       handleInputChange({ target: { name, value } })
                     }
-                    // onSelectChange={handleSelectChange}
+                  // onSelectChange={handleSelectChange}
                   />
                 </div>
               </fieldset>

@@ -13,16 +13,16 @@ const Otherawak = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   const [OtherawakData, setOtherawakData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     truck_number_id: "",
     material: "",
-    nos: 0,
+    nos: null,
     reason: "",
-    weight: 0,
-    bill_amount: 0,
+    weight: null,
+    bill_amount: null,
   });
   const [Alldata, setAlldata] = useState([]);
 
@@ -53,16 +53,16 @@ const Otherawak = () => {
     fetchMillData();
   }, []);
   const initialOtherawakData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     truck_number_id: "",
     material: "",
-    nos: 0,
+    nos: null,
     reason: "",
-    weight: 0,
-    bill_amount: 0,
+    weight: null,
+    bill_amount: null,
   };
   const resetForm = () => {
     setOtherawakData(initialOtherawakData);
@@ -154,7 +154,7 @@ const Otherawak = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[740px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
-              <div className="flex justify-between flex-wrap ">
+              {/* <div className="flex justify-between flex-wrap ">
                 <Inputbox
                   label="RST"
                   name="rst_number"
@@ -169,7 +169,7 @@ const Otherawak = () => {
                   label="Date"
                   name="date"
                 />
-              </div>
+              </div> */}
               <SelectInput
                 label="Party"
                 name="party_id"

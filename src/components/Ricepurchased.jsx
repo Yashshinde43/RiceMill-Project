@@ -8,14 +8,14 @@ import SelectInput from "../inputelement/Selectinput";
 import SideBar from "./Sidebar";
 const Ricepurchased = () => {
   const [RicepurchaseData, setRicepurchaseData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     broker_id: "",
     truck_number_id: "",
-    bags: 0,
-    mill_weight: 0,
-    party_weight: 0,
+    bags: null,
+    mill_weight: null,
+    party_weight: null,
     bill_to_rice_mill: "",
   });
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -44,14 +44,14 @@ const Ricepurchased = () => {
     fetchMillData();
   }, []);
   const initialRicepurchaseData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     broker_id: "",
     truck_number_id: "",
-    bags: 0,
-    mill_weight: 0,
-    party_weight: 0,
+    bags: null,
+    mill_weight: null,
+    party_weight: null,
     bill_to_rice_mill: "",
   };
   const resetForm = () => {

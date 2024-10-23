@@ -13,50 +13,50 @@ const Huskjawak = () => {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   
   const [HuskjawakData, setHuskjawakData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     remarks: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_receivable: 0,
+    total: null,
+    brokerage: null,
+    net_receivable: null,
     received_date: "",
     loading_date: "",
-    payment_received: 0,
-    number_of_days: 0,
-    payment_difference: 0,
+    payment_received: null,
+    number_of_days: null,
+    payment_difference: null,
   });
 
   const [Alldata, setAlldata] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
 
   const initialHuskjawakData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     remarks: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_receivable: 0,
+    total: null,
+    brokerage: null,
+    net_receivable: null,
     received_date: "",
     loading_date: "",
-    payment_received: 0,
-    number_of_days: 0,
-    payment_difference: 0,
+    payment_received: null,
+    number_of_days: null,
+    payment_difference: null,
   };
 
   const resetForm = () => {
@@ -148,14 +148,14 @@ const Huskjawak = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="flex justify-between flex-wrap ">
-                <Inputbox
+                {/* <Inputbox
                   label="RST"
                   name="rst_number"
                   type="number"
                   value={HuskjawakData.rst_number}
                   onChange={handleInputChange}
                   placeholder="Enter rst number"
-                />
+                /> */}
                 <Dateinput
                   value={HuskjawakData.date}
                   onChange={handleInputChange}

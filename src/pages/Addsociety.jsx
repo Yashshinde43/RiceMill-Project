@@ -11,10 +11,10 @@ import { useNavigate } from "react-router-dom";
 const AddNewSociety = () => {
   const [societyData, setSocietyData] = useState({
     society_name: "",
-    distance_from_mill: 0,
-    google_distance: 0,
-    actual_distance: 0,
-    transporting_rate: 0,
+    distance_from_mill: null,
+    google_distance: null,
+    actual_distance: null,
+    transporting_rate: null,
   });
 
   const [loading, setLoading] = useState(false);
@@ -22,10 +22,10 @@ const AddNewSociety = () => {
 
   const initialData = {
     society_name: "",
-    distance_from_mill: 0,
-    google_distance: 0,
-    actual_distance: 0,
-    transporting_rate: 0,
+    distance_from_mill: null,
+    google_distance: null,
+    actual_distance: null,
+    transporting_rate: null,
   };
 
   const apiKey = import.meta.env.VITE_API_KEY;

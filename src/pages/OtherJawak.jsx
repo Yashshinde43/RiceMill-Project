@@ -13,32 +13,32 @@ const Otherjawak = () => {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const [OtherjawakData, setOtherjawakData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     truck_number_id: "",
     material: "",
-    nos: 0,
+    nos: null,
     reason: "",
-    weight: 0,
-    bill_amount: 0,
+    weight: null,
+    bill_amount: null,
   });
 
   const [Alldata, setAlldata] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // State for confirmation modal
 
   const initialOtherjawakData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     truck_number_id: "",
     material: "",
-    nos: 0,
+    nos: null,
     reason: "",
-    weight: 0,
-    bill_amount: 0,
+    weight: null,
+    bill_amount: null,
   };
 
   const resetForm = () => {
@@ -117,21 +117,20 @@ const Otherjawak = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="flex justify-between flex-wrap">
-                <Inputbox
+                {/* <Inputbox
                   label="RST"
                   name="rst_number"
                   type="number"
                   value={OtherjawakData.rst_number}
                   onChange={handleInputChange}
                   placeholder="Enter rst number"
-                />
+                /> */}
                 <Dateinput
                   value={OtherjawakData.date}
                   onChange={handleInputChange}
                   label="Date"
                   name="date"
                 />
-              </div>
               <SelectInput
                 label="Party"
                 name="party_id"
@@ -162,6 +161,8 @@ const Otherjawak = () => {
                   })
                 }
               />
+                            </div>
+
               <div className="flex justify-between flex-wrap">
                 <SelectInput
                   label="Select Rice Mill"

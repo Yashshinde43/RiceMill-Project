@@ -8,36 +8,36 @@ import DateInput from "../inputelement/Dateinput";
 import SideBar from "../components/Sidebar";
 const Dhantransporting = () => {
   const [dhantransportingData, setdhantransportingData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     do_number_id: "",
     society_name_id: "",
     rice_mill_name_id: "",
-    dm_weight: 0,
+    dm_weight: null,
     truck_number_id: "",
-    transporting_rate: 0,
-    numbers_of_bags: 0,
-    transporting_total: 0,
+    transporting_rate: null,
+    numbers_of_bags: null,
+    transporting_total: null,
     transporter_name_id: "",
     status: "",
-    total_pending: 0,
-    total_paid: 0,
+    total_pending: null,
+    total_paid: null,
   });
   const initialDoData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     do_number_id: "",
     society_name_id: "",
     rice_mill_name_id: "",
-    dm_weight: 0,
+    dm_weight: null,
     truck_number_id: "",
-    transporting_rate: 0,
-    numbers_of_bags: 0,
-    transporting_total: 0,
+    transporting_rate: null,
+    numbers_of_bags: null,
+    transporting_total: null,
     transporter_name_id: "",
     status: "",
-    total_pending: 0,
-    total_paid: 0,
+    total_pending: null,
+    total_paid: null,
   };
   const resetForm = () => {
     setdhantransportingData(initialDoData);
@@ -231,14 +231,15 @@ const Dhantransporting = () => {
               />
 
               <div className="flex justify-between flex-wrap ">
-                <Inputbox
+                {/* <Inputbox
                   label="RST Number"
                   name="rst_number"
                   type="text"
                   onChange={handleInputChange}
                   value={dhantransportingData.rst_number}
-                />
+                  /> */}
 
+                  </div>
                 <SelectInput
                   label="DO Number"
                   name="do_number_id"
@@ -270,7 +271,6 @@ const Dhantransporting = () => {
                   }
                   placeholder="Select DO Number"
                 />
-              </div>
               <div className="flex justify-between flex-wrap ">
                 <SelectInput
                   label="Society"

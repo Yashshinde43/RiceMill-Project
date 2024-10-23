@@ -10,54 +10,54 @@ import Inputbox from "../inputelement/Inputbox";
 import SideBar from "../components/Sidebar";
 const Ricedeposit = () => {
   const [RicedepositData, setRicedepositData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
-    lot_number: 0,
+    lot_number: null,
     ware_house_id: "",
     rice_mill_name_id: "",
-    weight: 0,
+    weight: null,
     truck_number_id: "",
-    bags: 0,
-    transporting_total: 0,
+    bags: null,
+    transporting_total: null,
     transporter_name_id: "",
     transporting_type: "",
     transporting_status: "",
-    rate: 0,
+    rate: null,
     variety: "",
-    halting: 0,
-    rrga_wt: 0,
-    data_2022_23: 0,
-    data_2021_22: 0,
-    pds: 0,
-    old: 0,
-    amount: 0,
+    halting: null,
+    rrga_wt: null,
+    data_2null22_23: null,
+    data_2null21_22: null,
+    pds: null,
+    old: null,
+    amount: null,
     status: "",
-    hamali: 0,
+    hamali: null,
   });
   const initialDalaliData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
-    lot_number: 0,
+    lot_number: null,
     ware_house_id: "",
     rice_mill_name_id: "",
-    weight: 0,
+    weight: null,
     truck_number_id: "",
-    bags: 0,
-    transporting_total: 0,
+    bags: null,
+    transporting_total: null,
     transporter_name_id: "",
     transporting_type: "",
     transporting_status: "",
-    rate: 0,
+    rate: null,
     variety: "",
-    halting: 0,
-    rrga_wt: 0,
-    data_2022_23: 0,
-    data_2021_22: 0,
-    pds: 0,
-    old: 0,
-    amount: 0,
+    halting: null,
+    rrga_wt: null,
+    data_2null22_23: null,
+    data_2null21_22: null,
+    pds: null,
+    old: null,
+    amount: null,
     status: "",
-    hamali: 0,
+    hamali: null,
   };
   const resetForm = () => {
     setRicedepositData(initialDalaliData);
@@ -216,7 +216,7 @@ const Ricedeposit = () => {
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
-            className="mx-auto h-10 w-auto"
+            className="mx-auto h-1null w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
@@ -234,13 +234,13 @@ const Ricedeposit = () => {
               method="POST"
             >
               <div className="flex justify-between flex-wrap">
-                <Inputbox
+                {/* <Inputbox
                   label="Rst Number"
                   name="rst_number"
                   type="number"
                   value={RicedepositData.rst_number}
                   onChange={handleInputChange}
-                />
+                /> */}
                 <DateInput
                   label="Date"
                   name="date"

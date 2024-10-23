@@ -6,8 +6,8 @@ import SideBar from "../components/Sidebar";
 
 const Lotnumbermaster = () => {
   const [lotnumbermasterData, setlotnumbermasterData] = useState({
-    rice_mill_name_id: 0,
-    lot_number: 0,
+    rice_mill_name_id: null,
+    lot_number: null,
   });
 
   // Fetch data for the "Select Rice Mill" dropdown

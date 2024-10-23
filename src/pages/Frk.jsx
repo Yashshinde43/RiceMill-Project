@@ -9,26 +9,26 @@ import Input from "postcss/lib/input";
 import SideBar from "../components/Sidebar";
 const Frk = () => {
   const [frkData, setfrskData] = useState({
-    batch_number: 0,
+    batch_number: null,
     date: "",
     party: "",
-    bags: 0,
+    bags: null,
     weight: "",
     truck_number_id: "",
     rice_mill_name_id: "",
-    bill_number: 0,
-    rate: 0,
+    bill_number: null,
+    rate: null,
   });
   const initialData = {
-    batch_number: 0,
+    batch_number: null,
     date: "",
     party: "",
-    bags: 0,
+    bags: null,
     weight: "",
     truck_number_id: "",
     rice_mill_name_id: "",
-    bill_number: 0,
-    rate: 0,
+    bill_number: null,
+    rate: null,
   };
   const resetForm = () => {
     setfrskData(initialData);

@@ -8,9 +8,9 @@ const Transportermaster = () => {
   const [transportermasteData, settransportermasteData] = useState({
     vehicle_number_id: "",
     name: "",
-    phone_number: 0,
+    phone_number: null,
     date: "",
-    advance_payment: 0,
+    advance_payment: null,
     transporter_name_id: "",
   });
 

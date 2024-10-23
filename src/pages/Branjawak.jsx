@@ -13,46 +13,46 @@ const Branjawak = () => {
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   
   const [BranjawakData, setBranjawakData] = useState({
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_receivable: 0,
-    payment_received: 0,
-    payment_difference: 0,
+    total: null,
+    brokerage: null,
+    net_receivable: null,
+    payment_received: null,
+    payment_difference: null,
     remarks: "",
-    oil: 0,
+    oil: null,
   });
 
   const [Alldata, setAlldata] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // State for confirmation modal
 
   const initialBranjawakData = {
-    rst_number: 0,
+    rst_number: null,
     date: "",
     party_id: "",
     rice_mill_name_id: "",
     broker: "",
-    brokerage_percentage: 0,
-    weight: 0,
-    rate: 0,
-    number_of_bags: 0,
+    brokerage_percentage: null,
+    weight: null,
+    rate: null,
+    number_of_bags: null,
     truck_number_id: "",
-    total: 0,
-    brokerage: 0,
-    net_receivable: 0,
-    payment_received: 0,
-    payment_difference: 0,
+    total: null,
+    brokerage: null,
+    net_receivable: null,
+    payment_received: null,
+    payment_difference: null,
     remarks: "",
-    oil: 0,
+    oil: null,
   };
 
   useEffect(() => {
@@ -142,14 +142,14 @@ const Branjawak = () => {
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="flex justify-between flex-wrap ">
-                <Inputbox
+                {/* <Inputbox
                   label="RST"
                   name="rst_number"
                   type="number"
                   value={BranjawakData.rst_number}
                   onChange={handleInputChange}
                   placeholder="Enter RST number"
-                />
+                /> */}
                 <Dateinput
                   value={BranjawakData.date}
                   onChange={handleInputChange}
