@@ -14,7 +14,10 @@ const ShowWarehouses = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowWarehouses = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchWarehouses();
-      fetchPermissions(); // Fetch permissions after fetching warehouses
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchWarehouses();
+  //     fetchPermissions(); // Fetch permissions after fetching warehouses
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowWarehouses = () => {
             Warehouses Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the warehouses in the system including their name, address, contact, and transport rates.
+            A list of all the warehouses in the system including their name,
+            address, contact, and transport rates.
           </p>
         </div>
 
@@ -138,8 +142,12 @@ const ShowWarehouses = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Warehouse Name</th>
-                      <th className="px-4 py-3 font-semibold">Transporting Rate</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Warehouse Name
+                      </th>
+                      <th className="px-4 py-3 font-semibold">
+                        Transporting Rate
+                      </th>
                       <th className="px-4 py-3 font-semibold">Hamali Rate</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
                     </tr>
@@ -147,7 +155,10 @@ const ShowWarehouses = () => {
                   <tbody>
                     {warehouses.length === 0 ? (
                       <tr>
-                        <td colSpan="4" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="4"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No warehouses found.
                         </td>
                       </tr>
@@ -157,13 +168,21 @@ const ShowWarehouses = () => {
                           key={warehouse.ware_house_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{warehouse.ware_house_name}</td>
-                          <td className="px-4 py-3 text-gray-800">{warehouse.ware_house_transporting_rate}</td>
-                          <td className="px-4 py-3 text-gray-600">{warehouse.hamalirate}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {warehouse.ware_house_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {warehouse.ware_house_transporting_rate}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {warehouse.hamalirate}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button
-                                onClick={() => handleUpdate(warehouse.ware_house_id)}
+                                onClick={() =>
+                                  handleUpdate(warehouse.ware_house_id)
+                                }
                                 className="text-blue-600 hover:text-blue-800"
                               >
                                 <AiOutlineEdit size={20} />
@@ -171,7 +190,9 @@ const ShowWarehouses = () => {
                             )}
                             {permissions.delete && (
                               <button
-                                onClick={() => handleDelete(warehouse.ware_house_id)}
+                                onClick={() =>
+                                  handleDelete(warehouse.ware_house_id)
+                                }
                                 className="text-red-600 hover:text-red-800"
                               >
                                 <AiOutlineDelete size={20} />

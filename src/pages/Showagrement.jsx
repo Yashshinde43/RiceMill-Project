@@ -14,7 +14,10 @@ const ShowAgreements = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -108,15 +111,15 @@ const ShowAgreements = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchAgreements();
-      fetchPermissions(); // Fetch permissions after fetching agreements
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchAgreements();
+  //     fetchPermissions(); // Fetch permissions after fetching agreements
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -126,7 +129,8 @@ const ShowAgreements = () => {
             Agreements Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the agreements in the system, including their agreement number, type, and lot information.
+            A list of all the agreements in the system, including their
+            agreement number, type, and lot information.
           </p>
         </div>
 
@@ -142,8 +146,12 @@ const ShowAgreements = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Agreement Number</th>
-                      <th className="px-4 py-3 font-semibold">Type of Agreement</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Agreement Number
+                      </th>
+                      <th className="px-4 py-3 font-semibold">
+                        Type of Agreement
+                      </th>
                       <th className="px-4 py-3 font-semibold">Lot From</th>
                       <th className="px-4 py-3 font-semibold">Lot To</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
@@ -152,7 +160,10 @@ const ShowAgreements = () => {
                   <tbody>
                     {agreements.length === 0 ? (
                       <tr>
-                        <td colSpan="5" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="5"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No agreements found.
                         </td>
                       </tr>
@@ -162,14 +173,24 @@ const ShowAgreements = () => {
                           key={agreement.agremennt_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{agreement.agreement_number}</td>
-                          <td className="px-4 py-3 text-gray-800">{agreement.type_of_agreement}</td>
-                          <td className="px-4 py-3 text-gray-600">{agreement.lot_from}</td>
-                          <td className="px-4 py-3 text-gray-600">{agreement.lot_to}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {agreement.agreement_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {agreement.type_of_agreement}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {agreement.lot_from}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {agreement.lot_to}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button
-                                onClick={() => handleUpdate(agreement.agremennt_id)}
+                                onClick={() =>
+                                  handleUpdate(agreement.agremennt_id)
+                                }
                                 className="text-blue-600 hover:text-blue-800"
                               >
                                 <AiOutlineEdit size={20} />
@@ -177,7 +198,9 @@ const ShowAgreements = () => {
                             )}
                             {permissions.delete && (
                               <button
-                                onClick={() => handleDelete(agreement.agremennt_id)}
+                                onClick={() =>
+                                  handleDelete(agreement.agremennt_id)
+                                }
                                 className="text-red-600 hover:text-red-800"
                               >
                                 <AiOutlineDelete size={20} />

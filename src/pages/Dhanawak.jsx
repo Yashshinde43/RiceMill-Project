@@ -122,13 +122,13 @@ const Dhan_Awak = () => {
   useEffect(() => {
     async function fetchricedonumberData() {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         const truck_transporter = await axios.get(
           ` ${apiBaseUrl}/rice-do-number/${DhanAwakData.rice_mill_id}`,
           {
             headers: {
               "api-key": apiKey,
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -152,13 +152,13 @@ const Dhan_Awak = () => {
   useEffect(() => {
     async function fetchtrucktransporter() {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         const rice_do_number = await axios.get(
           `${apiBaseUrl}/truck-transporter/${DhanAwakData.transporter_name_id}`,
           {
             headers: {
               "api-key": apiKey,
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -179,13 +179,13 @@ const Dhan_Awak = () => {
   useEffect(() => {
     async function fetchtrucktransporter() {
       try {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem("token");
         const society_rate = await axios.get(
           `${apiBaseUrl}/society-transporting-rate/${DhanAwakData.society_id}`,
           {
             headers: {
               "api-key": apiKey,
-              "Authorization": `Bearer ${token}`,
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -222,16 +222,16 @@ const Dhan_Awak = () => {
     // });
 
     try {
-      const token = localStorage.getItem('token');
-      const response = await fetch(`${apiBaseUrl}/dhan-awak`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "api-key": apiKey,
-          "Authorization": `Bearer ${token}`,
-        },
-        body: JSON.stringify(DhanAwakData), // Ensure data is sent
-      });
+      // const token = localStorage.getItem("token");
+      // const response = await fetch(`${apiBaseUrl}/dhan-awak`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "api-key": apiKey,
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      //   body: JSON.stringify(DhanAwakData), // Ensure data is sent
+      // });
 
       if (response.ok) {
         toast.success("Form data added successfully", {
@@ -279,7 +279,6 @@ const Dhan_Awak = () => {
     setIsModalOpen(true); // Open the confirmation modal
   };
 
-
   return (
     <SideBar>
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -303,8 +302,7 @@ const Dhan_Awak = () => {
             >
               <div className="flex justify-between flex-wrap">
                 <div className="">
-
-                  <div >
+                  <div>
                     {/* <div className="flex justify-between">
                     <label
                     htmlFor="rst_number"
@@ -335,7 +333,7 @@ const Dhan_Awak = () => {
                     </div>
 
                     <Select
-                    className="mx-2"
+                      className="mx-2"
                       styles={customStyles}
                       name="rice_mill_id"
                       options={
@@ -348,13 +346,13 @@ const Dhan_Awak = () => {
                       value={
                         DhanAwakData.rice_mill_id
                           ? {
-                            label: DoOptions.rice_mill_data.find(
-                              (option) =>
-                                option.rice_mill_id ===
-                                DhanAwakData.rice_mill_id
-                            ).rice_mill_name,
-                            value: DhanAwakData.rice_mill_id,
-                          }
+                              label: DoOptions.rice_mill_data.find(
+                                (option) =>
+                                  option.rice_mill_id ===
+                                  DhanAwakData.rice_mill_id
+                              ).rice_mill_name,
+                              value: DhanAwakData.rice_mill_id,
+                            }
                           : null
                       }
                       onChange={(selectedOption) =>
@@ -366,7 +364,6 @@ const Dhan_Awak = () => {
                         })
                       }
                     />
-
                   </div>
                   <p className="mt-2 text-sm text-gray-500">
                     Cannot Find?{" "}
@@ -422,11 +419,11 @@ const Dhan_Awak = () => {
                       value={
                         DhanAwakData.do_id
                           ? {
-                            label: DoOptionsricedonumber.do_number_data.find(
-                              (option) => option.do_id === DhanAwakData.do_id
-                            ).do_number,
-                            value: DhanAwakData.do_id,
-                          }
+                              label: DoOptionsricedonumber.do_number_data.find(
+                                (option) => option.do_id === DhanAwakData.do_id
+                              ).do_number,
+                              value: DhanAwakData.do_id,
+                            }
                           : null
                       }
                       onChange={(selectedOption) =>
@@ -478,12 +475,12 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.society_id
                         ? {
-                          label: DoOptions.society_data.find(
-                            (option) =>
-                              option.society_id === DhanAwakData.society_id
-                          ).society_name,
-                          value: DhanAwakData.society_id,
-                        }
+                            label: DoOptions.society_data.find(
+                              (option) =>
+                                option.society_id === DhanAwakData.society_id
+                            ).society_name,
+                            value: DhanAwakData.society_id,
+                          }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -576,13 +573,13 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.transporter_name_id
                         ? {
-                          label: DoOptions.transporter_data.find(
-                            (option) =>
-                              option.transporter_id ===
-                              DhanAwakData.transporter_name_id
-                          ).transporter_name,
-                          value: DhanAwakData.transporter_name_id,
-                        }
+                            label: DoOptions.transporter_data.find(
+                              (option) =>
+                                option.transporter_id ===
+                                DhanAwakData.transporter_name_id
+                            ).transporter_name,
+                            value: DhanAwakData.transporter_name_id,
+                          }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -633,12 +630,12 @@ const Dhan_Awak = () => {
                     value={
                       DhanAwakData.truck_number_id
                         ? {
-                          label: DoOptionstrucktransporter.truck_data.find(
-                            (option) =>
-                              option.truck_id === DhanAwakData.truck_number_id
-                          ).truck_number,
-                          value: DhanAwakData.truck_number_id,
-                        }
+                            label: DoOptionstrucktransporter.truck_data.find(
+                              (option) =>
+                                option.truck_id === DhanAwakData.truck_number_id
+                            ).truck_number,
+                            value: DhanAwakData.truck_number_id,
+                          }
                         : null
                     }
                     onChange={(selectedOption) =>
@@ -913,12 +910,12 @@ const Dhan_Awak = () => {
                         +DhanAwakData.kisan +
                         +DhanAwakData.bardana_society) *
                         0.58) /
-                      100 +
+                        100 +
                       ((+DhanAwakData.hdpe_22_23 +
                         +DhanAwakData.hdpe_21_22 +
                         +DhanAwakData.hdpe_21_22_one_use) *
                         0.2) /
-                      100).toFixed(2)}
+                        100).toFixed(2)}
                     onChange={handleInputChange}
                     type="number"
                     name="total_bag_weight"
@@ -1051,7 +1048,7 @@ const Dhan_Awak = () => {
                     onChange={(name, value) =>
                       handleInputChange({ target: { name, value } })
                     }
-                  // onSelectChange={handleSelectChange}
+                    // onSelectChange={handleSelectChange}
                   />
                 </div>
               </fieldset>

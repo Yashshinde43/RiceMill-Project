@@ -14,7 +14,10 @@ const ShowDo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowDo = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchDos();
-      fetchPermissions(); // Fetch permissions after fetching DOs
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchDos();
+  //     fetchPermissions(); // Fetch permissions after fetching DOs
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowDo = () => {
             Delivery Orders Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the delivery orders in the system with their respective details.
+            A list of all the delivery orders in the system with their
+            respective details.
           </p>
         </div>
 
@@ -131,17 +135,23 @@ const ShowDo = () => {
             {isLoading ? (
               <div className="flex justify-center items-center">
                 <FaSpinner className="animate-spin text-indigo-600 text-3xl" />
-                <p className="ml-4 text-indigo-600">Loading delivery orders...</p>
+                <p className="ml-4 text-indigo-600">
+                  Loading delivery orders...
+                </p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Rice Mill Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Rice Mill Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">Date</th>
                       <th className="px-4 py-3 font-semibold">DO Number</th>
-                      <th className="px-4 py-3 font-semibold">Agreement Number</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Agreement Number
+                      </th>
                       <th className="px-4 py-3 font-semibold">Mota Weight</th>
                       <th className="px-4 py-3 font-semibold">Patla Weight</th>
                       <th className="px-4 py-3 font-semibold">Sarna Weight</th>
@@ -155,7 +165,10 @@ const ShowDo = () => {
                   <tbody>
                     {dos.length === 0 ? (
                       <tr>
-                        <td colSpan="6" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="6"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No delivery orders found.
                         </td>
                       </tr>
@@ -165,17 +178,39 @@ const ShowDo = () => {
                           key={doItem.do_number}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{doItem.rice_mill_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.date}</td>
-                          <td className="px-4 py-3 text-gray-800">{doItem.do_number}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.agreement_number}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.mota_weight}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.patla_weight}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.sarna_weight}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.total_weight}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.total_bardana}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.society_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{doItem.truck_number}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {doItem.rice_mill_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.date}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {doItem.do_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.agreement_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.mota_weight}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.patla_weight}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.sarna_weight}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.total_weight}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.total_bardana}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.society_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {doItem.truck_number}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

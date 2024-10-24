@@ -14,7 +14,10 @@ const ShowSocieties = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowSocieties = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchSocieties();
-      fetchPermissions(); // Fetch permissions after fetching societies
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchSocieties();
+  //     fetchPermissions(); // Fetch permissions after fetching societies
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowSocieties = () => {
             Societies Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the societies including their name, distance from mill, and transporting rate.
+            A list of all the societies including their name, distance from
+            mill, and transporting rate.
           </p>
         </div>
 
@@ -139,16 +143,25 @@ const ShowSocieties = () => {
                   <thead>
                     <tr className="bg-indigo-600 text-white">
                       <th className="px-4 py-3 font-semibold">Society Name</th>
-                      <th className="px-4 py-3 font-semibold">Distance From Mill</th>
-                      <th className="px-4 py-3 font-semibold">Google Distance</th>
-                      <th className="px-4 py-3 font-semibold">Transporting Rate</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Distance From Mill
+                      </th>
+                      <th className="px-4 py-3 font-semibold">
+                        Google Distance
+                      </th>
+                      <th className="px-4 py-3 font-semibold">
+                        Transporting Rate
+                      </th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {societies.length === 0 ? (
                       <tr>
-                        <td colSpan="5" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="5"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No societies found.
                         </td>
                       </tr>
@@ -158,10 +171,18 @@ const ShowSocieties = () => {
                           key={society.society_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{society.society_name}</td>
-                          <td className="px-4 py-3 text-gray-800">{society.distance_from_mill}</td>
-                          <td className="px-4 py-3 text-gray-600">{society.google_distance}</td>
-                          <td className="px-4 py-3 text-gray-600">{society.transporting_rate}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {society.society_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {society.distance_from_mill}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {society.google_distance}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {society.transporting_rate}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

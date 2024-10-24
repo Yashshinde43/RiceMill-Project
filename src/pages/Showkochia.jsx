@@ -14,7 +14,10 @@ const ShowKochia = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowKochia = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchKochia();
-      fetchPermissions(); // Fetch permissions after fetching Kochia list
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchKochia();
+  //     fetchPermissions(); // Fetch permissions after fetching Kochia list
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowKochia = () => {
             Kochia Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the Kochia data in the system including name, species, address, phone number, and capacity.
+            A list of all the Kochia data in the system including name, species,
+            address, phone number, and capacity.
           </p>
         </div>
 
@@ -138,7 +142,9 @@ const ShowKochia = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Rice Mill Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Rice Mill Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">Kochia Name</th>
                       <th className="px-4 py-3 font-semibold">Phone Number</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
@@ -147,7 +153,10 @@ const ShowKochia = () => {
                   <tbody>
                     {kochiaList.length === 0 ? (
                       <tr>
-                        <td colSpan="6" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="6"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No Kochia found.
                         </td>
                       </tr>
@@ -157,10 +166,16 @@ const ShowKochia = () => {
                           key={kochia.kochia_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{kochia.rice_mill_name}</td>
-                          <td className="px-4 py-3 text-gray-800">{kochia.kochia_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{kochia.kochia_phone_number}</td>
-                          
+                          <td className="px-4 py-3 text-gray-800">
+                            {kochia.rice_mill_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {kochia.kochia_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {kochia.kochia_phone_number}
+                          </td>
+
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

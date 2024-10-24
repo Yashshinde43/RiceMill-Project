@@ -104,7 +104,6 @@ const ShowOtherAwak = () => {
         fetchRiceMills(); // Refresh the list
       } else if (currentAction === "update") {
         navigate(`/update-other-awak/${selectedId}`);
-      
       }
     } catch (error) {
       toast.error("Error performing the action");
@@ -112,15 +111,15 @@ const ShowOtherAwak = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchRiceMills();
-      fetchPermissions(); // Fetch permissions after fetching rice mills
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchRiceMills();
+  //     fetchPermissions(); // Fetch permissions after fetching rice mills
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -147,9 +146,7 @@ const ShowOtherAwak = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">
-                        Rst Number
-                      </th>
+                      <th className="px-4 py-3 font-semibold">Rst Number</th>
                       <th className="px-4 py-3 font-semibold">Date</th>
                       <th className="px-4 py-3 font-semibold">Party Name</th>
                       <th className="px-4 py-3 font-semibold">Truck Number</th>

@@ -14,7 +14,10 @@ const ShowBrokers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowBrokers = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchBrokers();
-      fetchPermissions(); // Fetch permissions after fetching brokers
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchBrokers();
+  //     fetchPermissions(); // Fetch permissions after fetching brokers
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowBrokers = () => {
             Brokers Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the brokers in the system including their license number, name, address, and phone number.
+            A list of all the brokers in the system including their license
+            number, name, address, and phone number.
           </p>
         </div>
 
@@ -146,7 +150,10 @@ const ShowBrokers = () => {
                   <tbody>
                     {brokers.length === 0 ? (
                       <tr>
-                        <td colSpan="5" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="5"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No brokers found.
                         </td>
                       </tr>
@@ -156,8 +163,12 @@ const ShowBrokers = () => {
                           key={broker.broker_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{broker.broker_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{broker.broker_phone_number}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {broker.broker_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {broker.broker_phone_number}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

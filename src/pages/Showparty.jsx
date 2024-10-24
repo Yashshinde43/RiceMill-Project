@@ -14,7 +14,10 @@ const ShowParty = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -108,15 +111,15 @@ const ShowParty = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchParties();
-      fetchPermissions(); // Fetch permissions after fetching parties
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchParties();
+  //     fetchPermissions(); // Fetch permissions after fetching parties
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -126,7 +129,8 @@ const ShowParty = () => {
             Party Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the parties in the system including their name, address, and contact details.
+            A list of all the parties in the system including their name,
+            address, and contact details.
           </p>
         </div>
 
@@ -150,7 +154,10 @@ const ShowParty = () => {
                   <tbody>
                     {parties.length === 0 ? (
                       <tr>
-                        <td colSpan="5" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="5"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No parties found.
                         </td>
                       </tr>
@@ -160,8 +167,12 @@ const ShowParty = () => {
                           key={party.party_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{party.party_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{party.party_phone_number}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {party.party_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {party.party_phone_number}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

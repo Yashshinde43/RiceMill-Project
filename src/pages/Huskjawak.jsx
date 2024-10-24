@@ -11,7 +11,7 @@ import ToastNotification from "../components/ToastNotification";
 const Huskjawak = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-  
+
   const [HuskjawakData, setHuskjawakData] = useState({
     rst_number: null,
     date: "",
@@ -81,7 +81,7 @@ const Huskjawak = () => {
           headers: {
             "Content-Type": "application/json",
             "api-key": apiKey,
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -104,21 +104,24 @@ const Huskjawak = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      // Add navigation to login page if token is not present
-      navigate('/login');
-    }
+    // const token = localStorage.getItem("token");
+    // if (!token) {
+    //   // Add navigation to login page if token is not present
+    //   navigate("/login");
+    // }
 
     async function fetchMillData() {
       try {
-        const All_data = await axios.get(`${apiBaseUrl}/rice-truck-party-brokers`, {
-          headers: {
-            "Content-Type": "application/json",
-            "api-key": apiKey,
-            "Authorization": `Bearer ${token}`,
-          },
-        });
+        const All_data = await axios.get(
+          `${apiBaseUrl}/rice-truck-party-brokers`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "api-key": apiKey,
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         const data = All_data.data;
         setAlldata(data);

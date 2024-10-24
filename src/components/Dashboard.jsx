@@ -1,9 +1,8 @@
-import {useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 import SideBar from "../components/Sidebar";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
-
 
 const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -11,41 +10,42 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const UserDashboard = () => {
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
-  const userId = localStorage.getItem('userId'); // Ensure you store and retrieve the user ID
+  const userId = localStorage.getItem("userId"); // Ensure you store and retrieve the user ID
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`${apiBaseUrl}/users/${userId}`, {
-          headers: {
-            "api-key": apiKey,
-          },
-        });
-        setUserData(response.data);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await axios.get(`${apiBaseUrl}/users/${userId}`, {
+  //         headers: {
+  //           "api-key": apiKey,
+  //         },
+  //       });
+  //       setUserData(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
 
-    if (userId) {
-      fetchUserData();
-    }
-  }, [userId]);
+  //   if (userId) {
+  //     fetchUserData();
+  //   }
+  // }, [userId]);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login');
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate]);
 
-  if (!userData) return (
-    <SideBar>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p className="text-gray-600">Loading...</p>
-      </div>
-    </SideBar>
-  );
+  if (!userData)
+    return (
+      <SideBar>
+        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </SideBar>
+    );
 
   return (
     <SideBar>
@@ -57,7 +57,9 @@ const UserDashboard = () => {
           <div className="px-4 py-5 sm:px-6">
             <div className="grid grid-cols-1 gap-6">
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-lg font-medium text-gray-900">User Information</h2>
+                <h2 className="text-lg font-medium text-gray-900">
+                  User Information
+                </h2>
                 <div className="mt-4">
                   <p className="text-sm font-medium text-gray-500">Name:</p>
                   <p className="text-lg text-gray-900">{userData.name}</p>

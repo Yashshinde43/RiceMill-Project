@@ -14,7 +14,10 @@ const ShowOtherJawak = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -106,15 +109,15 @@ const ShowOtherJawak = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchOtherJawak();
-      fetchPermissions(); // Fetch permissions after fetching Other Jawak
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchOtherJawak();
+  //     fetchPermissions(); // Fetch permissions after fetching Other Jawak
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -143,7 +146,9 @@ const ShowOtherJawak = () => {
                       <th className="px-4 py-3 font-semibold">RST Number</th>
                       <th className="px-4 py-3 font-semibold">Date</th>
                       <th className="px-4 py-3 font-semibold">Party Name</th>
-                      <th className="px-4 py-3 font-semibold">Rice Mill Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Rice Mill Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">Truck Number</th>
                       <th className="px-4 py-3 font-semibold">Material</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
@@ -152,7 +157,10 @@ const ShowOtherJawak = () => {
                   <tbody>
                     {otherJawak.length === 0 ? (
                       <tr>
-                        <td colSpan="7" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="7"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No Other Jawak found.
                         </td>
                       </tr>
@@ -162,16 +170,30 @@ const ShowOtherJawak = () => {
                           key={jawak.other_jawak_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{jawak.rst_number}</td>
-                          <td className="px-4 py-3 text-gray-800">{jawak.date}</td>
-                          <td className="px-4 py-3 text-gray-800">{jawak.party_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{jawak.rice_mill_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{jawak.truck_number}</td>
-                          <td className="px-4 py-3 text-gray-600">{jawak.material}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {jawak.rst_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {jawak.date}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {jawak.party_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {jawak.rice_mill_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {jawak.truck_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {jawak.material}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button
-                                onClick={() => handleUpdate(jawak.other_jawak_id)}
+                                onClick={() =>
+                                  handleUpdate(jawak.other_jawak_id)
+                                }
                                 className="text-blue-600 hover:text-blue-800"
                               >
                                 <AiOutlineEdit size={20} />
@@ -179,7 +201,9 @@ const ShowOtherJawak = () => {
                             )}
                             {permissions.delete && (
                               <button
-                                onClick={() => handleDelete(jawak.other_jawak_id)}
+                                onClick={() =>
+                                  handleDelete(jawak.other_jawak_id)
+                                }
                                 className="text-red-600 hover:text-red-800"
                               >
                                 <AiOutlineDelete size={20} />

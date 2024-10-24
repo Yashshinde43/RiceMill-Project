@@ -14,7 +14,10 @@ const ShowTrucks = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -104,15 +107,15 @@ const ShowTrucks = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchTrucks();
-      fetchPermissions(); // Fetch permissions after fetching trucks
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchTrucks();
+  //     fetchPermissions(); // Fetch permissions after fetching trucks
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -122,7 +125,8 @@ const ShowTrucks = () => {
             Trucks Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the trucks in the system including their truck number, transporter name, and capacity.
+            A list of all the trucks in the system including their truck number,
+            transporter name, and capacity.
           </p>
         </div>
 
@@ -139,7 +143,9 @@ const ShowTrucks = () => {
                   <thead>
                     <tr className="bg-indigo-600 text-white">
                       <th className="px-4 py-3 font-semibold">Truck Number</th>
-                      <th className="px-4 py-3 font-semibold">Transporter Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Transporter Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">Transport ID</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
                     </tr>
@@ -147,7 +153,10 @@ const ShowTrucks = () => {
                   <tbody>
                     {trucks.length === 0 ? (
                       <tr>
-                        <td colSpan="4" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="4"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No trucks found.
                         </td>
                       </tr>
@@ -157,9 +166,15 @@ const ShowTrucks = () => {
                           key={truck.truck_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{truck.truck_number}</td>
-                          <td className="px-4 py-3 text-gray-800">{truck.transporter_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{truck.transport_id}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {truck.truck_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {truck.transporter_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {truck.transport_id}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button

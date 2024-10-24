@@ -14,7 +14,10 @@ const ShowTransporters = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentAction, setCurrentAction] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
-  const [permissions, setPermissions] = useState({ update: false, delete: false });
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  });
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -102,15 +105,15 @@ const ShowTransporters = () => {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchTransporters();
-      fetchPermissions(); // Fetch permissions after fetching transporters
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchTransporters();
+  //     fetchPermissions(); // Fetch permissions after fetching transporters
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -120,7 +123,8 @@ const ShowTransporters = () => {
             Transporters Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the transporters in the system including their name and phone number.
+            A list of all the transporters in the system including their name
+            and phone number.
           </p>
         </div>
 
@@ -136,7 +140,9 @@ const ShowTransporters = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Transporter Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Transporter Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">Phone Number</th>
                       <th className="px-4 py-3 font-semibold">Actions</th>
                     </tr>
@@ -144,7 +150,10 @@ const ShowTransporters = () => {
                   <tbody>
                     {transporters.length === 0 ? (
                       <tr>
-                        <td colSpan="3" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="3"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No transporters found.
                         </td>
                       </tr>
@@ -154,12 +163,18 @@ const ShowTransporters = () => {
                           key={transporter.transporter_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{transporter.transporter_name}</td>
-                          <td className="px-4 py-3 text-gray-600">{transporter.transporter_phone_number}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {transporter.transporter_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {transporter.transporter_phone_number}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button
-                                onClick={() => handleUpdate(transporter.transporter_id)}
+                                onClick={() =>
+                                  handleUpdate(transporter.transporter_id)
+                                }
                                 className="text-blue-600 hover:text-blue-800"
                               >
                                 <AiOutlineEdit size={20} />
@@ -167,7 +182,9 @@ const ShowTransporters = () => {
                             )}
                             {permissions.delete && (
                               <button
-                                onClick={() => handleDelete(transporter.transporter_id)}
+                                onClick={() =>
+                                  handleDelete(transporter.transporter_id)
+                                }
                                 className="text-red-600 hover:text-red-800"
                               >
                                 <AiOutlineDelete size={20} />

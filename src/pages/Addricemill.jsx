@@ -54,14 +54,14 @@ const Addricemill = () => {
       return;
     }
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         `${apiBaseUrl}/add-rice-mill/`,
         Addricedata,
         {
           headers: {
             "api-key": apiKey,
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -86,12 +86,12 @@ const Addricemill = () => {
     setIsModalOpen(true); // Open the confirmation modal
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      navigate('/login');
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (!token) {
+  //     navigate('/login');
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -143,13 +143,13 @@ const Addricemill = () => {
                 pattern="[0-9]{10}"
               />
               <Inputbox
-                  label="Rice Mill Capacity"
-                  name="rice_mill_capacity"
-                  value={Addricedata.rice_mill_capacity || ''}  // Ensures no '0' is shown, defaults to an empty string
-                  type="number"
-                  onChange={handleInputChange}
-                  placeholder="Enter Rice Mill Capacity"
-                />
+                label="Rice Mill Capacity"
+                name="rice_mill_capacity"
+                value={Addricedata.rice_mill_capacity || ""} // Ensures no '0' is shown, defaults to an empty string
+                type="number"
+                onChange={handleInputChange}
+                placeholder="Enter Rice Mill Capacity"
+              />
 
               <div>
                 <button
@@ -175,4 +175,3 @@ const Addricemill = () => {
 };
 
 export default Addricemill;
-

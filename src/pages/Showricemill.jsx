@@ -14,7 +14,10 @@ const ShowRiceMills = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
   const [currentAction, setCurrentAction] = useState(null); // To hold the current action and ID
   const [selectedId, setSelectedId] = useState(null); // To hold the selected ID
-  const [permissions, setPermissions] = useState({ update: false, delete: false }); // State for permissions
+  const [permissions, setPermissions] = useState({
+    update: false,
+    delete: false,
+  }); // State for permissions
 
   const navigate = useNavigate();
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -22,13 +25,13 @@ const ShowRiceMills = () => {
 
   const fetchRiceMills = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get(`${apiBaseUrl}/get-all-rice-mills/`, {
-        headers: {
-          "api-key": apiKey,
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // const token = localStorage.getItem("token");
+      // const response = await axios.get(`${apiBaseUrl}/get-all-rice-mills/`, {
+      //   headers: {
+      //     "api-key": apiKey,
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
 
       if (response.status === 200) {
         setRiceMills(response.data);
@@ -44,14 +47,14 @@ const ShowRiceMills = () => {
 
   const fetchPermissions = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const roleName = localStorage.getItem("role");
+      // const token = localStorage.getItem("token");
+      // const roleName = localStorage.getItem("role");
 
-      // Admins should have all permissions
-      if (roleName === "admin") {
-        setPermissions({ update: true, delete: true });
-        return;
-      }
+      // // Admins should have all permissions
+      // if (roleName === "admin") {
+      //   setPermissions({ update: true, delete: true });
+      //   return;
+      // }
 
       const response = await axios.get(`${apiBaseUrl}/roles-and-permissions`, {
         headers: {
@@ -108,15 +111,15 @@ const ShowRiceMills = () => {
     setIsModalOpen(false); // Close the modal after performing the action
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    } else {
-      fetchRiceMills();
-      fetchPermissions(); // Fetch permissions after fetching rice mills
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   } else {
+  //     fetchRiceMills();
+  //     fetchPermissions(); // Fetch permissions after fetching rice mills
+  //   }
+  // }, [navigate]);
 
   return (
     <SideBar>
@@ -126,7 +129,8 @@ const ShowRiceMills = () => {
             Rice Mills Directory
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            A list of all the rice mills in the system including their GST number, name, address, phone number, and capacity.
+            A list of all the rice mills in the system including their GST
+            number, name, address, phone number, and capacity.
           </p>
         </div>
 
@@ -142,7 +146,9 @@ const ShowRiceMills = () => {
                 <table className="min-w-full text-left table-auto border-collapse border border-gray-300">
                   <thead>
                     <tr className="bg-indigo-600 text-white">
-                      <th className="px-4 py-3 font-semibold">Rice Mill Name</th>
+                      <th className="px-4 py-3 font-semibold">
+                        Rice Mill Name
+                      </th>
                       <th className="px-4 py-3 font-semibold">GST Number</th>
                       <th className="px-4 py-3 font-semibold">Mill Address</th>
                       <th className="px-4 py-3 font-semibold">Phone Number</th>
@@ -153,7 +159,10 @@ const ShowRiceMills = () => {
                   <tbody>
                     {riceMills.length === 0 ? (
                       <tr>
-                        <td colSpan="6" className="text-center py-4 text-gray-600">
+                        <td
+                          colSpan="6"
+                          className="text-center py-4 text-gray-600"
+                        >
                           No rice mills found.
                         </td>
                       </tr>
@@ -163,11 +172,21 @@ const ShowRiceMills = () => {
                           key={mill.rice_mill_id}
                           className="bg-white hover:bg-gray-100 transition-colors duration-150 border-t border-gray-200"
                         >
-                          <td className="px-4 py-3 text-gray-800">{mill.rice_mill_name}</td>
-                          <td className="px-4 py-3 text-gray-800">{mill.gst_number}</td>
-                          <td className="px-4 py-3 text-gray-600">{mill.mill_address}</td>
-                          <td className="px-4 py-3 text-gray-600">{mill.phone_number}</td>
-                          <td className="px-4 py-3 text-gray-600">{mill.rice_mill_capacity}</td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {mill.rice_mill_name}
+                          </td>
+                          <td className="px-4 py-3 text-gray-800">
+                            {mill.gst_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {mill.mill_address}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {mill.phone_number}
+                          </td>
+                          <td className="px-4 py-3 text-gray-600">
+                            {mill.rice_mill_capacity}
+                          </td>
                           <td className="px-4 py-3 text-gray-600 flex space-x-2">
                             {permissions.update && (
                               <button
